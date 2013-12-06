@@ -1,0 +1,8 @@
+(compare with file table.csv)
+
+looking at the numbers I got from testing different lambdas, my first impression was that it worked best for lambda=500. It was the only testvalue where I got several times an accuracy of 90% or more. Also the results seemed to be in a close range, apart from that 68.05 that really destroys the picture.
+So although lambda=500 gets the highest accuracy I think lambda=10000 is better, because it has less variation.
+For lambda that are either smaler or larger than 500/10000 the accuracy drops again.
+Throughout all the tests there are always cases when a result is untypically low. I have not found a way to explain that.
+
+Compared to the other algorithms it seams to be not any better, although I'd expected it to be so. May be it just needs some fine-tuning. Since I didn't implement the algorthim myself (I am quite glad for that), I do not really understand how it works and that way I am a bit at loss in improving the results.
