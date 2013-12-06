@@ -1,27 +1,25 @@
-% I have some problems with this task and I needed to google a lot around. To save time, I'll add the most important URL which helped me. My main guidline was:
-% http://math.stackexchange.com/questions/3869/what-is-the-intuitive-relationship-between-svd-and-pca
+% Let's do it again, I think I got the hang of it now!
 
 function Eigen = pca_FuogJudith(Data, k)
 
-[m,n] size(Data);
+% init, always handy to have.
+% m - number of samples
+% n - dimension
+[m,n] = size(Data); 
+X = Data'; % Example I follow uses it that way...
 
-% Normalize data, so that it has zero mean
-% http://stackoverflow.com/questions/8717139/zero-mean-and-unit-variance-of-a-signal
-X = Data - mean(Data(:)); % this are the first to stepts in the previous task
+% Prepare data for svd. That means normalizing each sample to have zero mean and unit standart deviantion.
+X -= mean(Data(:));
+X /=std(X(:)); % Not sure if I need to do that.
 
-% using svd. Since the data has zero means, V should be an orthogonal matrix. But it seems that there are numerical problems and it doesn't quiet work out. But since the mistake is pretty small, I just ignore it. 
+% Following PCA procedure, we would now calculate the covariance of X, and then calculate the eigenvalues and eigenvectors of Sigma. Using SVD makes it a lot easier:
+% A = USV'and AA'=US²U'
+% Here the columns of U contain the eigenvectors of AA' and the eigenvalues of AA' are the squares of the singular values in S.
 
-[U,S,V] = svd(X);
+[U, S, V] = svd(X);
 
-% Now we got X = U*S*V', so if we have 
-% X*X' = (USV')(USV')' = (USV')(VS'U') = USV'VS'U' = US²U'
-% because V is orthogonal and S is a diagonal matrix.
+% So we're basically done, we've got the eigenvalues which we need to return, but we should only return k-principal components. I would have thought, that we would return the best in descanding order, but I have found no way to figure out such a thing. So I'll just return the k-first principal components.
 
-% Here starts my biggest confusion: what is Sigma?
-% Sigma = (X*X')/m = USU'/m
+Eigen = U(:,1:k);
 
-Sigma = (U*S*S'*U')/m;
-
-Eigen = eye(size(Data,2));
-
-
+% X = [1 2 3;4 5 6;7 8 9;6 5 2;7 7 1] testing use only

@@ -7,6 +7,8 @@ X = Data;
 % normalize mean
 mu = mean(X,1); %mean of all rows
 X = X - repmat(mu,examples,1); %works faster than broadcast?
+% simpler: X = X - mean(X(:));
+
 
 % normalize scale
 sigma = diag(X'*X)'/examples; %thanks for the tip :)
