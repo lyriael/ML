@@ -10,8 +10,8 @@ X = Data'; % Example I follow uses it that way...
 
 % Prepare data for svd. That means normalizing each 
 % sample to have zero mean and unit standart deviantion.
-X -= mean(Data(:));
-X /=std(X(:)); % Not sure if I need to do that.
+%X -= mean(Data(:));
+%X /=std(X(:)); % Not sure if I need to do that.
 
 % Following PCA procedure, we would now calculate 
 % the covariance of X, and then calculate the eigenvalues 
@@ -33,3 +33,9 @@ X /=std(X(:)); % Not sure if I need to do that.
 % *confuuuuused*
 
 Eigen = U(:,1:k);
+
+
+%Dims
+%Data: MxN
+%X: NxM
+%Eigen: NxK
