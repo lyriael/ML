@@ -1,0 +1,22 @@
+Outer Iteration: 20
+k: 20, 	accuracy: 89
+Outer Iteration: 21
+k: 21, 	accuracy: 89
+Outer Iteration: 22
+k: 22, 	accuracy: 89
+Outer Iteration: 23
+k: 23, 	accuracy: 89
+Outer Iteration: 24
+k: 24, 	accuracy: 90
+Outer Iteration: 25
+k: 25, 	accuracy: 90
+Outer Iteration: 26
+k: 26, 	accuracy: 90
+Outer Iteration: 27
+k: 27, 	accuracy: 90
+Outer Iteration: 28
+k: 28, 	accuracy: 90
+Outer Iteration: 29
+k: 29, 	accuracy: 90
+Outer Iteration: 30
+k: 30, 	accuracy: 90

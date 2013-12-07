@@ -37,7 +37,6 @@ Faces = DataTrain(LabelsTrain == 1,:);
 %normalization
 [NormFaces] = normalizeData_FuogJudith(Faces);
 
-
 %%%%%%%%% ITERATIONS %%%%%%%%%%%%
 tic;
 iterations = 10;
