@@ -91,7 +91,7 @@ y(y == 0) = -1;
 
 % PCA
 %number of eigenvectors
-k = 526;
+k = 1;
 Efaces = pca_FuogJudith(NormFaces,k);
 
 % Project Data to PCA basis

@@ -1,25 +1,23 @@
-% Let's do it again, I think I got the hang of it now!
-
 function Eigen = pca_FuogJudith(Data, k)
-% Data = [1 2 3;4 5 6;7 8 9;6 5 2;7 7 1]; k=2; testing use only
-% init, always handy to have.
-% m - number of samples
-% n - dimension
+%%
+% m is the number of samples
+% n is the dimension
 [m,n] = size(Data); 
-X = Data'; % Example I follow uses it that way...
+X = Data';
 
-% Prepare data for svd. That means normalizing each 
-% sample to have zero mean and unit standart deviantion.
-%X -= mean(Data(:));
-%X /=std(X(:)); % Not sure if I need to do that.
-
-% Following PCA procedure, we would now calculate 
-% the covariance of X, and then calculate the eigenvalues 
-% and eigenvectors of Sigma. Using SVD makes it a lot easier:
-% A = USV'and AA'=US²U'
-% Here the columns of U contain the eigenvectors of AA' and 
-% the eigenvalues of AA' are the squares of the singular values in S.
-
+%%
+% Since the means of the dimension in the adjusted data set X are 0,
+% the covariance matrix can simply be written as:
+% Sigma = (XX')/(n-1)
+% For this matrix Sigma, we need to find the eigenvetors. Using SVD makes
+% this a lot easier. 
+% SVD(M) = [U, S, V], where M = U*S*V'
+% If we replace now M with X*X', we get:
+% XX' = (USV')(USV')' = USV'VS'U'
+% Since XX' is symetric and has zero mean, it is diagonalizable thus V is 
+% orthonormal and we'll find our eigenvectors in the colums of U (and the
+% eigenvalues are the squares of the singular values in S).
+% XX' = USIS'U'= US²U'
 [U, S, V] = svd(X);
 
 % So we're basically done, we've got the eigenvalues which we 
@@ -32,11 +30,13 @@ X = Data'; % Example I follow uses it that way...
 % which dimensions will be left out from the original data set?
 % *confuuuuused*
 
-assert(k<=size(U,1));
+%%
+% All that is left to do now is to select k of the n eigenvectors.
+% Here I am a little bit at loss, since I dont know how to select them.
+% I know that the eigenvalues are by default of SVD in a descending order, 
+% so I pick the first k eigenvectors that correspond to those eigenvalues, 
+% hoping that those are the princial components.
+
+assert(k<=size(U,1)); % debug reasons
 Eigen = U(:,1:k);
 
-
-%Dims
-%Data: MxN
-%X: NxM
-%Eigen: NxK

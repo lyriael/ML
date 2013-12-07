@@ -1,6 +1,9 @@
 close all;
 clear all;
 clc;
+%%
+% This script is based on hw5.m
+% It was extended by some iterations to get an evaluation plot of the data.
 
 %%%%%%%%%%% SETUUP %%%%%%%%%%%
 % Am I running octave?
@@ -16,9 +19,10 @@ else
     run([VLFEAT_FOLDER  '/toolbox/vl_setup.m']);
 end
 
-%%%%%%%%% DATA LOAD %%%%%%%%%%%%
+%%%%%%%%% LOAD DATA %%%%%%%%%%%%
 load('faces.mat');
 N = size(Data,1);
+D = size(Data,2);
 testPercent = 30; 
 
 % Load data and select test set
@@ -35,19 +39,18 @@ Faces = DataTrain(LabelsTrain == 1,:);
 
 
 %%%%%%%%% ITERATIONS %%%%%%%%%%%%
-iterations = 2;
-steps = 150;
-dimension = size(Data,2);
+tic;
+iterations = 10;
+steps = 5;
 
-outerIterations = ceil(dimension/steps);
+outerIterations = ceil(D/steps);
 accuracy = zeros(1, outerIterations);
 
 i = 1;
 while i<=outerIterations
 	fprintf('Outer Iteration: %i\n',i);
-	tic;
+	
 	principalComponents = 1 + (i-1)*steps;
-	%fprintf('start inner %i loop, k: %i\n',i, principalComponents); %debug
 	% PCA
 	%number of eigenvectors
 	Efaces = pca_FuogJudith(NormFaces, principalComponents);
@@ -74,16 +77,17 @@ while i<=outerIterations
 	end
 	accuracy(i) = mean(accuracyTemp);
 	elapsed_time = toc;
-	fprintf('k: %i, \taccuracy: %d, \telapsed_time: %d\n', principalComponents, accuracy(i), elapsed_time);
+	fprintf('k: %i, \taccuracy: %d\n', principalComponents, accuracy(i));
 	i +=1;
 endwhile
+toc;
 
 %%%%%%%% PLOT %%%%%%%%%%%
 yAxis = accuracy;
-xAxis = [1:steps:dimension];
+xAxis = [1:steps:D];
 figure;
 plot(xAxis, yAxis);
-axis([1 dimension 40 100]);
+axis([1 D 40 100]);
 title('Principal Component Analysis');
 xlabel('Number of Principal Components taken');
 ylabel('accuracy (%)');

@@ -1,0 +1,234 @@
+Outer Iteration: 1
+k: 1,   accuracy: 48
+Outer Iteration: 2
+k: 6,   accuracy: 84
+Outer Iteration: 3
+k: 11,  accuracy: 86
+Outer Iteration: 4
+k: 16,  accuracy: 88
+Outer Iteration: 5
+k: 21,  accuracy: 89
+Outer Iteration: 6
+k: 26,  accuracy: 90
+Outer Iteration: 7
+k: 31,  accuracy: 90
+Outer Iteration: 8
+k: 36,  accuracy: 90
+Outer Iteration: 9
+k: 41,  accuracy: 90
+Outer Iteration: 10
+k: 46,  accuracy: 91
+Outer Iteration: 11
+k: 51,  accuracy: 91
+Outer Iteration: 12
+k: 56,  accuracy: 91
+Outer Iteration: 13
+k: 61,  accuracy: 91
+Outer Iteration: 14
+k: 66,  accuracy: 91
+Outer Iteration: 15
+k: 71,  accuracy: 91
+Outer Iteration: 16
+k: 76,  accuracy: 91
+Outer Iteration: 17
+k: 81,  accuracy: 91
+Outer Iteration: 18
+k: 86,  accuracy: 91
+Outer Iteration: 19
+k: 91,  accuracy: 91
+Outer Iteration: 20
+k: 96,  accuracy: 91
+Outer Iteration: 21
+k: 101,         accuracy: 91
+Outer Iteration: 22
+k: 106,         accuracy: 91
+Outer Iteration: 23
+k: 111,         accuracy: 91
+Outer Iteration: 24
+k: 116,         accuracy: 91
+Outer Iteration: 25
+k: 121,         accuracy: 91
+Outer Iteration: 26
+k: 126,         accuracy: 91
+Outer Iteration: 27
+k: 131,         accuracy: 91
+Outer Iteration: 28
+k: 136,         accuracy: 91
+Outer Iteration: 29
+k: 141,         accuracy: 91
+Outer Iteration: 30
+k: 146,         accuracy: 91
+Outer Iteration: 31
+k: 151,         accuracy: 91
+Outer Iteration: 32
+k: 156,         accuracy: 91
+Outer Iteration: 33
+k: 161,         accuracy: 91
+Outer Iteration: 34
+k: 166,         accuracy: 91
+Outer Iteration: 35
+k: 171,         accuracy: 91
+Outer Iteration: 36
+k: 176,         accuracy: 91
+Outer Iteration: 37
+k: 181,         accuracy: 91
+Outer Iteration: 38
+k: 186,         accuracy: 91
+Outer Iteration: 39
+k: 191,         accuracy: 91
+Outer Iteration: 40
+k: 196,         accuracy: 91
+Outer Iteration: 41
+k: 201,         accuracy: 91
+Outer Iteration: 42
+k: 206,         accuracy: 91
+Outer Iteration: 43
+k: 211,         accuracy: 91
+Outer Iteration: 44
+k: 216,         accuracy: 91
+Outer Iteration: 45
+k: 221,         accuracy: 91
+Outer Iteration: 46
+k: 226,         accuracy: 91
+Outer Iteration: 47
+k: 231,         accuracy: 91
+Outer Iteration: 48
+k: 236,         accuracy: 91
+Outer Iteration: 49
+k: 241,         accuracy: 91
+Outer Iteration: 50
+k: 246,         accuracy: 91
+Outer Iteration: 51
+k: 251,         accuracy: 91
+Outer Iteration: 52
+k: 256,         accuracy: 91
+Outer Iteration: 53
+k: 261,         accuracy: 91
+Outer Iteration: 54
+k: 266,         accuracy: 91
+Outer Iteration: 55
+k: 271,         accuracy: 91
+Outer Iteration: 56
+k: 276,         accuracy: 91
+Outer Iteration: 57
+k: 281,         accuracy: 91
+Outer Iteration: 58
+k: 286,         accuracy: 91
+Outer Iteration: 59
+k: 291,         accuracy: 91
+Outer Iteration: 60
+k: 296,         accuracy: 91
+Outer Iteration: 61
+k: 301,         accuracy: 91
+Outer Iteration: 62
+k: 306,         accuracy: 91
+Outer Iteration: 63
+k: 311,         accuracy: 91
+Outer Iteration: 64
+k: 316,         accuracy: 91
+Outer Iteration: 65
+k: 321,         accuracy: 91
+Outer Iteration: 66
+k: 326,         accuracy: 91
+Outer Iteration: 67
+k: 331,         accuracy: 91
+Outer Iteration: 68
+k: 336,         accuracy: 91
+Outer Iteration: 69
+k: 341,         accuracy: 91
+Outer Iteration: 70
+k: 346,         accuracy: 91
+Outer Iteration: 71
+k: 351,         accuracy: 91
+Outer Iteration: 72
+k: 356,         accuracy: 91
+Outer Iteration: 73
+k: 361,         accuracy: 91
+Outer Iteration: 74
+k: 366,         accuracy: 91
+Outer Iteration: 75
+k: 371,         accuracy: 91
+Outer Iteration: 76
+k: 376,         accuracy: 91
+Outer Iteration: 77
+k: 381,         accuracy: 91
+Outer Iteration: 78
+k: 386,         accuracy: 91
+Outer Iteration: 79
+k: 391,         accuracy: 91
+Outer Iteration: 80
+k: 396,         accuracy: 91
+Outer Iteration: 81
+k: 401,         accuracy: 91
+Outer Iteration: 82
+k: 406,         accuracy: 91
+Outer Iteration: 83
+k: 411,         accuracy: 91
+Outer Iteration: 84
+k: 416,         accuracy: 91
+Outer Iteration: 85
+k: 421,         accuracy: 91
+Outer Iteration: 86
+k: 426,         accuracy: 91
+Outer Iteration: 87
+k: 431,         accuracy: 91
+Outer Iteration: 88
+k: 436,         accuracy: 91
+Outer Iteration: 89
+k: 441,         accuracy: 91
+Outer Iteration: 90
+k: 446,         accuracy: 91
+Outer Iteration: 91
+k: 451,         accuracy: 91
+Outer Iteration: 92
+k: 456,         accuracy: 91
+Outer Iteration: 93
+k: 461,         accuracy: 91
+Outer Iteration: 94
+k: 466,         accuracy: 91
+Outer Iteration: 95
+k: 471,         accuracy: 91
+Outer Iteration: 96
+k: 476,         accuracy: 91
+Outer Iteration: 97
+k: 481,         accuracy: 91
+Outer Iteration: 98
+k: 486,         accuracy: 91
+Outer Iteration: 99
+k: 491,         accuracy: 91
+Outer Iteration: 100
+k: 496,         accuracy: 91
+Outer Iteration: 101
+k: 501,         accuracy: 91
+Outer Iteration: 102
+k: 506,         accuracy: 91
+Outer Iteration: 103
+k: 511,         accuracy: 91
+Outer Iteration: 104
+k: 516,         accuracy: 91
+Outer Iteration: 105
+k: 521,         accuracy: 91
+Outer Iteration: 106
+k: 526,         accuracy: 91
+Outer Iteration: 107
+k: 531,         accuracy: 91
+Outer Iteration: 108
+k: 536,         accuracy: 91
+Outer Iteration: 109
+k: 541,         accuracy: 91
+Outer Iteration: 110
+k: 546,         accuracy: 91
+Outer Iteration: 111
+k: 551,         accuracy: 91
+Outer Iteration: 112
+k: 556,         accuracy: 91
+Outer Iteration: 113
+k: 561,         accuracy: 91
+Outer Iteration: 114
+k: 566,         accuracy: 91
+Outer Iteration: 115
+k: 571,         accuracy: 91
+Outer Iteration: 116
+k: 576,         accuracy: 91
+Elapsed time is 3.85e+03 seconds.
+

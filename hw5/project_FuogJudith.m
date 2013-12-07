@@ -1,16 +1,17 @@
 function Projected = project_FuogJudith(Data, Basis)
 
-% I assume that the basis vectors are the colums of 'Basis'.
-% 
-assert(size(Data,2),size(Basis,1));
 [n,k] = size(Basis);
-assert(n>=k);
 m = size(Data,1);
 
+% for debug reasons
+assert(size(Data,2),size(Basis,1)); 
+assert(n>=k);
+
 Data = Data';
-Y = Basis'*Data; % kxm = kxn * nxm
 
+%%
+% Make a transformation of bases
+% y_i = u'x_i
+% where we have KxN * NxM = KxM
+Y = Basis'*Data; 
 Projected = Y';
-
-%Dim
-%Data: NxM
