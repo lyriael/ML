@@ -4,7 +4,7 @@ function Projected = project_FuogJudith(Data, Basis)
 % 
 assert(size(Data,2),size(Basis,1));
 [n,k] = size(Basis);
-assert(n>k);
+assert(n>=k);
 m = size(Data,1);
 
 Data = Data';

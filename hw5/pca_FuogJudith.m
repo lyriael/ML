@@ -32,6 +32,7 @@ X = Data'; % Example I follow uses it that way...
 % which dimensions will be left out from the original data set?
 % *confuuuuused*
 
+assert(k<=size(U,1));
 Eigen = U(:,1:k);
 
 
