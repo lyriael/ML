@@ -2,7 +2,6 @@ close all;
 clear all;
 clc;
 
-
 %%%%%%%%%%% SETUUP %%%%%%%%%%%
 % Am I running octave?
 isOctave = exist('OCTAVE_VERSION') ~= 0;
@@ -22,41 +21,44 @@ load('faces.mat');
 N = size(Data,1);
 testPercent = 30; 
 
+% Load data and select test set
+testIdx = rand(1,N) <= testPercent/100;
+trainIdx = ~testIdx;
+DataTrain = Data(trainIdx,:);
+LabelsTrain = Labels(1,trainIdx);
+DataITest = Data(testIdx,:);
+LabelsTest = Labels(1,testIdx);
+Faces = DataTrain(LabelsTrain == 1,:);
 
-%%%%%%%%% ITERATION %%%%%%%%%%%%
-iterations = 1;
-steps = 525;
-upperLimit = size(Data,2);
+%normalization
+[NormFaces] = normalizeData_FuogJudith(Faces);
 
-innerIterations = ceil(upperLimit/steps);
-A = zeros(iterations, innerIterations);
 
-for j=1:iterations
+%%%%%%%%% ITERATIONS %%%%%%%%%%%%
+iterations = 2;
+steps = 150;
+dimension = size(Data,2);
+
+outerIterations = ceil(dimension/steps);
+accuracy = zeros(1, outerIterations);
+
+i = 1;
+while i<=outerIterations
+	fprintf('Outer Iteration: %i\n',i);
 	tic;
-	% Load data and select test set
-	testIdx = rand(1,N) <= testPercent/100;
-	trainIdx = ~testIdx;
-	DataTrain = Data(trainIdx,:);
-	LabelsTrain = Labels(1,trainIdx);
-	DataITest = Data(testIdx,:);
-	LabelsTest = Labels(1,testIdx);
-	Faces = DataTrain(LabelsTrain == 1,:);
+	principalComponents = 1 + (i-1)*steps;
+	%fprintf('start inner %i loop, k: %i\n',i, principalComponents); %debug
+	% PCA
+	%number of eigenvectors
+	Efaces = pca_FuogJudith(NormFaces, principalComponents);
 
-	%normalization
-	[NormFaces] = normalizeData_FuogJudith(Faces);
-	fprintf('InnerIterations: %i\n',innerIterations);
-	i = 1;
-	while i<=innerIterations
-		principalComponents = 1 + (i-1)*steps;
-		fprintf('start inner %i loop, k: %i\n',i, principalComponents);
-		% PCA
-		%number of eigenvectors
-		Efaces = pca_FuogJudith(NormFaces, principalComponents);
+	% Project Data to PCA basis
+	DataTrainTemp = project_FuogJudith(DataTrain, Efaces);
+	DataITestTemp = project_FuogJudith(DataITest, Efaces);
 
-		% Project Data to PCA basis
-		DataTrainTemp = project_FuogJudith(DataTrain, Efaces);
-		DataITestTemp = project_FuogJudith(DataITest, Efaces);
-
+	% get average accuracy of SVM
+	accuracyTemp = zeros(1,iterations);
+	for j=1:iterations
 		% SVM
 		lambda = 100;
 		svm_iters = 10000000;
@@ -68,19 +70,21 @@ for j=1:iterations
 		scores = (DataITestTemp*w + b)';
 		classifierOutput = (scores >= 0.0) - (scores < 0.0);
 		good = classifierOutput == LabelsTest;
-		accuracy = 100*sum(good)/size(good,2);
-		elapsed_time = toc;
-		
-		A(j,i) = accuracy;
-		%fprintf('i: %i, k: %i, accuracy: %d, elapsed_time: %d\n', i, principalComponents, A(j,i), elapsed_time);
-		i +=1;
-	endwhile
-end
+		accuracyTemp(j) = 100*sum(good)/size(good,2);
+	end
+	accuracy(i) = mean(accuracyTemp);
+	elapsed_time = toc;
+	fprintf('k: %i, \taccuracy: %d, \telapsed_time: %d\n', principalComponents, accuracy(i), elapsed_time);
+	i +=1;
+endwhile
 
 %%%%%%%% PLOT %%%%%%%%%%%
-for j=1:iterations
-	for i=1:InnerIterations
-		fprintf('%d ', A(j,i));
-	end
-	printf('\n');
-end
+yAxis = accuracy;
+xAxis = [1:steps:dimension];
+figure;
+plot(xAxis, yAxis);
+axis([1 dimension 40 100]);
+title('Principal Component Analysis');
+xlabel('Number of Principal Components taken');
+ylabel('accuracy (%)');
+
