@@ -5,30 +5,23 @@ function Eigen = pca_FuogJudith(Data, k)
 [m,n] = size(Data); 
 X = Data';
 
-%%
-% Since the means of the dimension in the adjusted data set X are 0,
-% the covariance matrix can simply be written as:
-% Sigma = (XX')/(n-1)
-% For this matrix Sigma, we need to find the eigenvetors. Using SVD makes
-% this a lot easier. 
-% SVD(M) = [U, S, V], where M = U*S*V'
-% If we replace now M with X*X', we get:
-% XX' = (USV')(USV')' = USV'VS'U'
-% Since XX' is symetric and has zero mean, it is diagonalizable thus V is 
-% orthonormal and we'll find our eigenvectors in the colums of U (and the
-% eigenvalues are the squares of the singular values in S).
-% XX' = USIS'U'= US²U'
-[U, S, V] = svd(X);
+%% 
+% Computing PCA through SVD
+% SVD gives us M = U*S*V' for any matrix M, where U and V' ar orthonormal.
+% Leftmultiplication with M' gives us: 
+% A = M*M' = (U*S*V')(U*S*V')' = U*S*S'U', since V is orthonormal.
+% A is a square, symmetric matrix.Thus we have dagonalized M*M' and we 
+% finde the eigenvectors in the columns of U as well as the eigenvalues in
+% S*S'.
+% For PCA we need the eigenvectors of the covariance matrix. Since our
+% adjusted data X has zero means our covariance matrix Sigma = X*X'/(n-1).
+% Since 1/(n-1) is only a scalar finding the eigenvectors for X*X'/(n-1) is
+% the same as finding the eigenvectors of X*X'.
+% As we have seen before, we get the eigenvectors of X*X' by simply using
+% SVD on X alone.
+% Thus U contains all eigenvectors of the covariance matrix of our data.
 
-% So we're basically done, we've got the eigenvalues which we 
-% need to return, but we should only return k-principal components. 
-% I would have thought, that we would return the best in descanding 
-% order, but I have found no way to figure out such a thing. 
-% So I'll just return the k-first principal components. Since the
-% eigenvalues are descending, may be the eigenvecotrs are correstpondingly.
-% But then, when I do a basistransformation in the next step, how will I know
-% which dimensions will be left out from the original data set?
-% *confuuuuused*
+[U, S, V] = svd(X);
 
 %%
 % All that is left to do now is to select k of the n eigenvectors.
@@ -36,6 +29,7 @@ X = Data';
 % I know that the eigenvalues are by default of SVD in a descending order, 
 % so I pick the first k eigenvectors that correspond to those eigenvalues, 
 % hoping that those are the princial components.
+% Edit: The results seem fine, so I guess that's the correct way to do it.
 
 assert(k<=size(U,1)); % debug reasons
 Eigen = U(:,1:k);
